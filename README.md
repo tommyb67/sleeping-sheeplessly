@@ -22,3 +22,5 @@ Key requirement: company nees to establish workflow for eCommerce WebSite
 - Dotem?
 - RSpec, testing
 - Capybara - integration tests
+
+https://rails.devcamp.com/professional-rails-development-course/application-build/rails-app-configuration
