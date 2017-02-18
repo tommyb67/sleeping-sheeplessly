@@ -5,7 +5,7 @@ Key requirement: company nees to establish workflow for eCommerce WebSite
 ## Models
 -  Banners, Promotions, products set-ups, ad-hoc
 - User - devise
-- Administration
+- Administration -> STI
 
 
 ## Features
