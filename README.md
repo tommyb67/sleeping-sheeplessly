@@ -24,3 +24,5 @@ Key requirement: company nees to establish workflow for eCommerce WebSite
 - Capybara - integration tests
 
 https://rails.devcamp.com/professional-rails-development-course/application-build/rails-app-configuration
+
+https://rails.devcamp.com/professional-rails-development-course/post-feature/implementing-dynamic-forms-in-rails
