@@ -28,3 +28,5 @@ https://rails.devcamp.com/professional-rails-development-course/application-buil
 https://rails.devcamp.com/professional-rails-development-course/post-feature/implementing-dynamic-forms-in-rails
 
 http://www.layoutit.com/
+
+https://rails.devcamp.com/professional-rails-development-course/advanced-user-features/how-to-integrate-growl-type-notifications-rails-app
