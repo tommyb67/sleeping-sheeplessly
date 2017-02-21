@@ -30,3 +30,5 @@ https://rails.devcamp.com/professional-rails-development-course/post-feature/imp
 http://www.layoutit.com/
 
 https://rails.devcamp.com/professional-rails-development-course/advanced-user-features/how-to-integrate-growl-type-notifications-rails-app
+
+https://rails.devcamp.com/professional-rails-development-course/advanced-user-features/installing-admin-dashboard-rails-using-administrate-gem
