@@ -23,7 +23,19 @@ describe 'navigate' do
       post1 = FactoryGirl.build_stubbed(:post)
       post2 = FactoryGirl.build_stubbed(:second_post)
       visit posts_path
-      expect(page).to have_content(/Rationale|Content/)
+      expect(page).to have_content(/Rationale|content/)
+    end
+
+    it 'has a scope so that only post creators can see their posts' do
+      post1 = Post.create(date: Date.today, rationale: "asdf", user_id: @user.id)
+      post1 = Post.create(date: Date.today, rationale: "asdf", user_id: @user.id)
+
+      other_user = User.create(first_name: 'Non', last_name: 'Authorized', email: "nonauth@example.com", password: "asdfasdf", password_confirmation: "asdfasdf")
+      post_from_other_user = Post.create(date: Date.today, rationale: "This post should not be seen", user_id: other_user.id)
+
+      visit posts_path
+
+      expect(page).to_not have_content(/This post should not be seen/)
     end
   end
 
@@ -39,6 +51,7 @@ describe 'navigate' do
     describe 'delete' do
       it 'can be deleted' do
         @post = FactoryGirl.create(:post)
+        @post.update(user_id: @user.id)
         visit posts_path
 
         click_link("delete_post_#{@post.id}_from_index")
@@ -74,7 +87,7 @@ describe 'navigate' do
 
   describe 'edit' do
     before do
-      @edit_user = User.create(first_name: "Joey", last_name: "Blaze", email: "jblaze@abcd.com", password: "abcde", password_confirmation: "abcde")
+      @edit_user = User.create(first_name: "asdf", last_name: "asdf", email: "asdfasdf@asdf.com", password: "asdfasdf", password_confirmation: "asdfasdf")
       login_as(@edit_user, :scope => :user)
       @edit_post = Post.create(date: Date.today, rationale: "YoYoMa", user_id: @edit_user.id)
     end
@@ -89,13 +102,14 @@ describe 'navigate' do
       expect(page).to have_content("Edited content")
     end
 
-    it 'cannot be edited by non authorized user' do
+    it 'cannot be edited by a non authorized user' do
       logout(:user)
       non_authorized_user = FactoryGirl.create(:non_authorized_user)
       login_as(non_authorized_user, :scope => :user)
 
       visit edit_post_path(@edit_post)
-      expect(current_page).to equal(root_path)
+
+      expect(current_path).to eq(root_path)
     end
   end
 end
